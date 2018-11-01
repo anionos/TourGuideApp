@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class TourDetailsActivity extends AppCompatActivity {
 
     public String tag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,17 +23,15 @@ public class TourDetailsActivity extends AppCompatActivity {
         // Find the view pager that will allow the user to swipe between fragments
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-
-
         Intent intent = getIntent();
 
         ArrayList<Event> events = Parcels.unwrap(intent.getParcelableExtra("events"));
         ArrayList<Restaurants> restaurants = Parcels.unwrap(intent.getParcelableExtra("restaurants"));
         ArrayList<Attractions> attractions = Parcels.unwrap(intent.getParcelableExtra("attractions"));
-
+        ArrayList<Hotel> hotels = Parcels.unwrap(intent.getParcelableExtra("hotels"));
 
         // Create an adapter that knows which fragment should be shown on each page
-        TourAdapter adapter = new TourAdapter(this, getSupportFragmentManager(), events, restaurants, attractions);
+        TourAdapter adapter = new TourAdapter(this, getSupportFragmentManager(), events, restaurants, attractions, hotels);
 
         // Set the adapter onto the view pager
         viewPager.setAdapter(adapter);
@@ -41,8 +40,6 @@ public class TourDetailsActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         tabLayout.setupWithViewPager(viewPager);
-
-
 
     }
 }

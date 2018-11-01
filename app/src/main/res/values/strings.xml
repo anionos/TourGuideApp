@@ -4,5 +4,19 @@
     <string name="event">Event</string>
     <string name="attractions">Attractions</string>
     <string name="restaurant">Restaurant</string>
+    <string name="hotels">Hotels</string>
+    <string name="photos">Photos</string>
+    <string name="choose_your">choose your</string>
+    <string name="destination">Destination</string>
+    <string name="tour">Tour</string>
+    <string name="pp">pp.</string>
+    <string name="anny_onos">Anny onos</string>
+    <string name="_10min_ago">10min ago</string>
+    <string name="akwa_ibom">Akwa Ibom</string>
+    <string name="_3_visits">3 Visits</string>
+    <string name="recommended">Recommended</string>
+    <string name="explore">Explore</string>
+    <string name="e_library">E-Library</string>
+    <string name="lagos">Lagos</string>
 
 </resources>

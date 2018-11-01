@@ -69,10 +69,10 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:elevation="15dp"
-        android:text="E-Library"
-        android:textSize="18sp"
-        android:textColor="@android:color/white"
+        android:text="@string/e_library"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/museum_card1"
         app:layout_constraintStart_toStartOf="@+id/museum_card1" />
 

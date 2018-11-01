@@ -27,6 +27,7 @@ public class Event {
         this.mImageResource = mImageResource;
         this.mDescription = mDescription;
     }
+
     @ParcelConstructor
     public Event() {
     }

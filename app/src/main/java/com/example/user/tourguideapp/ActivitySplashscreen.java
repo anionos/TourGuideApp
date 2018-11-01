@@ -8,8 +8,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class ActivitySplashscreen extends AppCompatActivity {
-
-    /** Duration of wait **/
+    /**
+     * Duration of wait
+     **/
     private final int SPLASH_DISPLAY_LENGTH = 3000;
 
     @Override
@@ -22,20 +23,19 @@ public class ActivitySplashscreen extends AppCompatActivity {
         setContentView(R.layout.activity_splashscreen);
         /* New Handler to start the Menu-Activity
          * and close this Splash-Screen after some seconds.*/
-        new Handler().postDelayed(new Runnable(){
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
                 goToSecondActivity();
             }
         }, SPLASH_DISPLAY_LENGTH);
-
     }
+
     public void goToSecondActivity() {
         //display in short period of time
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
-
     }
 }

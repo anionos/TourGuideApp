@@ -46,7 +46,7 @@ public class EventFragment extends Fragment {
         return rootView;
     }
 
-    void setEvents(ArrayList<Event> events){
+    void setEvents(ArrayList<Event> events) {
         this.events = events;
     }
 }

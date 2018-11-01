@@ -38,8 +38,8 @@ public class ItemFragment extends Fragment {
             R.drawable.lagos,
             R.drawable.abiaa, R.drawable.abeokuta};
 
-    private String[] textArray = new String[]{"Calabar","Abuja",
-            "Lagos","Abia","Abeokuta"};
+    private String[] textArray = new String[]{"Calabar", "Abuja",
+            "Lagos", "Abia", "Abeokuta"};
 
     public static Fragment newInstance(MainActivity context, int pos, float scale) {
         Bundle b = new Bundle();
@@ -65,9 +65,9 @@ public class ItemFragment extends Fragment {
         final int postion = this.getArguments().getInt(POSITON);
         float scale = this.getArguments().getFloat(SCALE);
 
-        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams((screenWidth / 2 + screenWidth/6) , (screenHeight / 2 + screenHeight/8));
-        LinearLayout.LayoutParams layoutParamsLL = new LinearLayout.LayoutParams((screenWidth / 2 + screenWidth/6) , (screenHeight / 2 + screenHeight/8));
-        FrameLayout.LayoutParams layoutParamsFL = new FrameLayout.LayoutParams((screenWidth / 2 + screenWidth/6) , (screenHeight / 2 + screenHeight/8));
+        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams((screenWidth / 2 + screenWidth / 6), (screenHeight / 2 + screenHeight / 8));
+        LinearLayout.LayoutParams layoutParamsLL = new LinearLayout.LayoutParams((screenWidth / 2 + screenWidth / 6), (screenHeight / 2 + screenHeight / 8));
+        FrameLayout.LayoutParams layoutParamsFL = new FrameLayout.LayoutParams((screenWidth / 2 + screenWidth / 6), (screenHeight / 2 + screenHeight / 8));
 
         LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.fragment_image, container, false);
 
@@ -88,18 +88,16 @@ public class ItemFragment extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(textArray[postion].equals("Calabar")){
-                    startTourDetailsActivity(getEventsInCalabar(), getAttractionsInCalabar(), getRestaurantInCalabar());
-                }
-                else if(textArray[postion].equals("Abuja")){
-                    startTourDetailsActivity(getEventsInAbuja(), getAttractionsInAbuja(), getRestaurantInAbuja());
-                } else if(textArray[postion].equals("Lagos")){
-                    startTourDetailsActivity(getEventsInLagos(), getAttractionsInLagos(), getRestaurantInLagos());
-                }
-                else if(textArray[postion].equals("Abia")){
-                    startTourDetailsActivity(getEventsInAbia(), getAttractionsInAbia(), getRestaurantInAbia());
+                if (textArray[postion].equals("Calabar")) {
+                    startTourDetailsActivity(getEventsInCalabar(), getAttractionsInCalabar(), getRestaurantInCalabar(),getHotelsInCalabar());
+                } else if (textArray[postion].equals("Abuja")) {
+                    startTourDetailsActivity(getEventsInAbuja(), getAttractionsInAbuja(), getRestaurantInAbuja(),getHotelsInAbuja());
+                } else if (textArray[postion].equals("Lagos")) {
+                    startTourDetailsActivity(getEventsInLagos(), getAttractionsInLagos(), getRestaurantInLagos(),getHotelsInLagos());
+                } else if (textArray[postion].equals("Abia")) {
+                    startTourDetailsActivity(getEventsInAbia(), getAttractionsInAbia(), getRestaurantInAbia(),getHotelsInAbia());
                 } else {
-                    startTourDetailsActivity(getEventsInAbeokuta(), getAttractionsInAbeokuta(), getRestaurantInAbeokuta());
+                    startTourDetailsActivity(getEventsInAbeokuta(), getAttractionsInAbeokuta(), getRestaurantInAbeokuta(),getHotelsInAbeokuta());
                 }
             }
         });
@@ -109,12 +107,13 @@ public class ItemFragment extends Fragment {
         return linearLayout;
     }
 
-    public void startTourDetailsActivity(ArrayList<Event> events,ArrayList<Attractions>attractions, ArrayList<Restaurants>restaurants){
-        Intent intent = new Intent(getActivity(),TourDetailsActivity.class);
+    public void startTourDetailsActivity(ArrayList<Event> events, ArrayList<Attractions> attractions, ArrayList<Restaurants> restaurants, ArrayList<Hotel> hotels) {
+        Intent intent = new Intent(getActivity(), TourDetailsActivity.class);
         //this adds extra data to the intent of the next activity
         intent.putExtra("events", Parcels.wrap(events));
         intent.putExtra("attractions", Parcels.wrap(attractions));
         intent.putExtra("restaurants", Parcels.wrap(restaurants));
+        intent.putExtra("hotels", Parcels.wrap(hotels));
         startActivity(intent);
     }
 
@@ -127,7 +126,8 @@ public class ItemFragment extends Fragment {
         screenHeight = displaymetrics.heightPixels;
         screenWidth = displaymetrics.widthPixels;
     }
-    public ArrayList<Event> getEventsInCalabar(){
+
+    public ArrayList<Event> getEventsInCalabar() {
 
         // Create a list of events
         final ArrayList<Event> events = new ArrayList<Event>();
@@ -141,32 +141,46 @@ public class ItemFragment extends Fragment {
         return events;
     }
 
-    public ArrayList<Attractions> getAttractionsInCalabar(){
+    public ArrayList<Attractions> getAttractionsInCalabar() {
         // Create a list of events
         final ArrayList<Attractions> attractions = new ArrayList<Attractions>();
-        attractions.add(new Attractions("Donald duke Garden",R.drawable.cally,R.drawable.fourpoints));
-        attractions.add(new Attractions("Obudu Mountain Resort", R.drawable.obudu,R.drawable.fourpoints));
-        attractions.add(new Attractions("Calabar Carnival", R.drawable.cal_festival,R.drawable.fourpoints));
-        attractions.add(new Attractions( "Tinapa", R.drawable.tin, R.drawable.fourpoints));
+        attractions.add(new Attractions("Donald duke Garden", R.drawable.cally, R.drawable.fourpoints));
+        attractions.add(new Attractions("Obudu Mountain Resort", R.drawable.obudu, R.drawable.fourpoints));
+        attractions.add(new Attractions("Calabar Carnival", R.drawable.cal_festival, R.drawable.fourpoints));
+        attractions.add(new Attractions("Tinapa", R.drawable.tin, R.drawable.fourpoints));
         attractions.add(new Attractions("Mighty Hands", R.drawable.cally, R.drawable.fourpoints));
-        attractions.add(new Attractions("Snake Garden", R.drawable.obudu,R.drawable.fourpoints));
+        attractions.add(new Attractions("Snake Garden", R.drawable.obudu, R.drawable.fourpoints));
 
         return attractions;
     }
 
-    public ArrayList<Restaurants> getRestaurantInCalabar(){
+    public ArrayList<Restaurants> getRestaurantInCalabar() {
         // Create a list of events
         final ArrayList<Restaurants> restaurants = new ArrayList<Restaurants>();
-        restaurants.add(new Restaurants( R.drawable.cal_festival,"serve Yourself"));
-        restaurants.add(new Restaurants( R.drawable.cally,"Delicious"));
-        restaurants.add(new Restaurants( R.drawable.tin,"Spicy"));
-        restaurants.add(new Restaurants( R.drawable.obudu, "Mama's Touch"));
-        restaurants.add(new Restaurants( R.drawable.cal_markrt,"Supreme Meal"));
+        restaurants.add(new Restaurants(R.drawable.cal_festival, "serve Yourself"));
+        restaurants.add(new Restaurants(R.drawable.cally, "Delicious"));
+        restaurants.add(new Restaurants(R.drawable.tin, "Spicy"));
+        restaurants.add(new Restaurants(R.drawable.obudu, "Mama's Touch"));
+        restaurants.add(new Restaurants(R.drawable.cal_markrt, "Supreme Meal"));
 
         return restaurants;
     }
 
-    public ArrayList<Event> getEventsInAbuja(){
+    public ArrayList<Hotel> getHotelsInCalabar() {
+        // Create a list of events
+        final ArrayList<Hotel> hotels = new ArrayList<Hotel>();
+        hotels.add(new Hotel("Calabar Festival", "December, 2018", R.drawable.stadium, "This Eveny is awesome"));
+        hotels.add(new Hotel("mustard yellow", "chiwiiṭә", R.drawable.elibrary,
+                "great place to be"));
+        hotels.add(new Hotel("dusty yellow", "ṭopiisә", R.drawable.fourpoints,
+                "mighty fellowship"));
+        hotels.add(new Hotel("green", "chokokki", R.drawable.trops, "great event with Emem"));
+        hotels.add(new Hotel("brown", "ṭakaakki", R.drawable.elibrary, "great and mighty God"));
+
+        return hotels;
+    }
+
+    public ArrayList<Event> getEventsInAbuja() {
 
         // Create a list of events
         final ArrayList<Event> events = new ArrayList<Event>();
@@ -181,33 +195,47 @@ public class ItemFragment extends Fragment {
         return events;
     }
 
-    public ArrayList<Attractions> getAttractionsInAbuja(){
+    public ArrayList<Attractions> getAttractionsInAbuja() {
         // Create a list of events
         final ArrayList<Attractions> attractions = new ArrayList<Attractions>();
-        attractions.add(new Attractions("Calabar Festival",R.drawable.stadium,R.drawable.stadium));
-        attractions.add(new Attractions("mustard yellow", R.drawable.elibrary,R.drawable.elibrary));
-        attractions.add(new Attractions("dusty yellow", R.drawable.fourpoints,R.drawable.fourpoints));
-        attractions.add(new Attractions( "chokokki", R.drawable.trops, R.drawable.trops));
+        attractions.add(new Attractions("Calabar Festival", R.drawable.stadium, R.drawable.stadium));
+        attractions.add(new Attractions("mustard yellow", R.drawable.elibrary, R.drawable.elibrary));
+        attractions.add(new Attractions("dusty yellow", R.drawable.fourpoints, R.drawable.fourpoints));
+        attractions.add(new Attractions("chokokki", R.drawable.trops, R.drawable.trops));
         attractions.add(new Attractions("ṭakaakki", R.drawable.elibrary, R.drawable.stadium));
-        attractions.add(new Attractions("ṭopoppi", R.drawable.stadium,R.drawable.fourpoints));
+        attractions.add(new Attractions("ṭopoppi", R.drawable.stadium, R.drawable.fourpoints));
 
         return attractions;
     }
 
-    public ArrayList<Restaurants> getRestaurantInAbuja(){
+    public ArrayList<Restaurants> getRestaurantInAbuja() {
         // Create a list of events
         final ArrayList<Restaurants> restaurants = new ArrayList<Restaurants>();
-        restaurants.add(new Restaurants( R.drawable.stadium,"Filter"));
-        restaurants.add(new Restaurants( R.drawable.elibrary,"great place to be"));
-        restaurants.add(new Restaurants( R.drawable.fourpoints,"mighty fellowship"));
-        restaurants.add(new Restaurants( R.drawable.trops, "great event with Emem"));
-        restaurants.add(new Restaurants( R.drawable.elibrary,"great and mighty God"));
-        restaurants.add(new Restaurants( R.drawable.stadium,"good lord vincent is..."));
+        restaurants.add(new Restaurants(R.drawable.stadium, "Filter"));
+        restaurants.add(new Restaurants(R.drawable.elibrary, "great place to be"));
+        restaurants.add(new Restaurants(R.drawable.fourpoints, "mighty fellowship"));
+        restaurants.add(new Restaurants(R.drawable.trops, "great event with Emem"));
+        restaurants.add(new Restaurants(R.drawable.elibrary, "great and mighty God"));
+        restaurants.add(new Restaurants(R.drawable.stadium, "good lord vincent is..."));
 
         return restaurants;
     }
 
-    public ArrayList<Event> getEventsInLagos(){
+    public ArrayList<Hotel> getHotelsInAbuja() {
+        // Create a list of events
+        final ArrayList<Hotel> hotels = new ArrayList<Hotel>();
+        hotels.add(new Hotel("Calabar Festival", "December, 2018", R.drawable.stadium, "This Eveny is awesome"));
+        hotels.add(new Hotel("mustard yellow", "chiwiiṭә", R.drawable.elibrary,
+                "great place to be"));
+        hotels.add(new Hotel("dusty yellow", "ṭopiisә", R.drawable.fourpoints,
+                "mighty fellowship"));
+        hotels.add(new Hotel("green", "chokokki", R.drawable.trops, "great event with Emem"));
+        hotels.add(new Hotel("brown", "ṭakaakki", R.drawable.elibrary, "great and mighty God"));
+
+        return hotels;
+    }
+
+    public ArrayList<Event> getEventsInLagos() {
 
         // Create a list of events
         final ArrayList<Event> events = new ArrayList<Event>();
@@ -222,33 +250,47 @@ public class ItemFragment extends Fragment {
         return events;
     }
 
-    public ArrayList<Attractions> getAttractionsInLagos(){
+    public ArrayList<Attractions> getAttractionsInLagos() {
         // Create a list of events
         final ArrayList<Attractions> attractions = new ArrayList<Attractions>();
-        attractions.add(new Attractions("Calabar Festival",R.drawable.stadium,R.drawable.stadium));
-        attractions.add(new Attractions("mustard yellow", R.drawable.elibrary,R.drawable.elibrary));
-        attractions.add(new Attractions("dusty yellow", R.drawable.fourpoints,R.drawable.fourpoints));
-        attractions.add(new Attractions( "chokokki", R.drawable.trops, R.drawable.trops));
+        attractions.add(new Attractions("Calabar Festival", R.drawable.stadium, R.drawable.stadium));
+        attractions.add(new Attractions("mustard yellow", R.drawable.elibrary, R.drawable.elibrary));
+        attractions.add(new Attractions("dusty yellow", R.drawable.fourpoints, R.drawable.fourpoints));
+        attractions.add(new Attractions("chokokki", R.drawable.trops, R.drawable.trops));
         attractions.add(new Attractions("ṭakaakki", R.drawable.elibrary, R.drawable.stadium));
-        attractions.add(new Attractions("ṭopoppi", R.drawable.stadium,R.drawable.fourpoints));
+        attractions.add(new Attractions("ṭopoppi", R.drawable.stadium, R.drawable.fourpoints));
 
         return attractions;
     }
 
-    public ArrayList<Restaurants> getRestaurantInLagos(){
+    public ArrayList<Restaurants> getRestaurantInLagos() {
         // Create a list of events
         final ArrayList<Restaurants> restaurants = new ArrayList<Restaurants>();
-        restaurants.add(new Restaurants( R.drawable.stadium,"Filter"));
-        restaurants.add(new Restaurants( R.drawable.elibrary,"great place to be"));
-        restaurants.add(new Restaurants( R.drawable.fourpoints,"mighty fellowship"));
-        restaurants.add(new Restaurants( R.drawable.trops, "great event with Emem"));
-        restaurants.add(new Restaurants( R.drawable.elibrary,"great and mighty God"));
-        restaurants.add(new Restaurants( R.drawable.stadium,"good lord vincent is..."));
+        restaurants.add(new Restaurants(R.drawable.stadium, "Filter"));
+        restaurants.add(new Restaurants(R.drawable.elibrary, "great place to be"));
+        restaurants.add(new Restaurants(R.drawable.fourpoints, "mighty fellowship"));
+        restaurants.add(new Restaurants(R.drawable.trops, "great event with Emem"));
+        restaurants.add(new Restaurants(R.drawable.elibrary, "great and mighty God"));
+        restaurants.add(new Restaurants(R.drawable.stadium, "good lord vincent is..."));
 
         return restaurants;
     }
 
-    public ArrayList<Event> getEventsInAbia(){
+    public ArrayList<Hotel> getHotelsInLagos() {
+        // Create a list of events
+        final ArrayList<Hotel> hotels = new ArrayList<Hotel>();
+        hotels.add(new Hotel("Calabar Festival", "December, 2018", R.drawable.stadium, "This Eveny is awesome"));
+        hotels.add(new Hotel("mustard yellow", "chiwiiṭә", R.drawable.elibrary,
+                "great place to be"));
+        hotels.add(new Hotel("dusty yellow", "ṭopiisә", R.drawable.fourpoints,
+                "mighty fellowship"));
+        hotels.add(new Hotel("green", "chokokki", R.drawable.trops, "great event with Emem"));
+        hotels.add(new Hotel("brown", "ṭakaakki", R.drawable.elibrary, "great and mighty God"));
+
+        return hotels;
+    }
+
+    public ArrayList<Event> getEventsInAbia() {
 
         // Create a list of events
         final ArrayList<Event> events = new ArrayList<Event>();
@@ -263,33 +305,47 @@ public class ItemFragment extends Fragment {
         return events;
     }
 
-    public ArrayList<Attractions> getAttractionsInAbia(){
+    public ArrayList<Attractions> getAttractionsInAbia() {
         // Create a list of events
         final ArrayList<Attractions> attractions = new ArrayList<Attractions>();
-        attractions.add(new Attractions("Calabar Festival",R.drawable.stadium,R.drawable.stadium));
-        attractions.add(new Attractions("mustard yellow", R.drawable.elibrary,R.drawable.elibrary));
-        attractions.add(new Attractions("dusty yellow", R.drawable.fourpoints,R.drawable.fourpoints));
-        attractions.add(new Attractions( "chokokki", R.drawable.trops, R.drawable.trops));
+        attractions.add(new Attractions("Calabar Festival", R.drawable.stadium, R.drawable.stadium));
+        attractions.add(new Attractions("mustard yellow", R.drawable.elibrary, R.drawable.elibrary));
+        attractions.add(new Attractions("dusty yellow", R.drawable.fourpoints, R.drawable.fourpoints));
+        attractions.add(new Attractions("chokokki", R.drawable.trops, R.drawable.trops));
         attractions.add(new Attractions("ṭakaakki", R.drawable.elibrary, R.drawable.stadium));
-        attractions.add(new Attractions("ṭopoppi", R.drawable.stadium,R.drawable.fourpoints));
+        attractions.add(new Attractions("ṭopoppi", R.drawable.stadium, R.drawable.fourpoints));
 
         return attractions;
     }
 
-    public ArrayList<Restaurants> getRestaurantInAbia(){
+    public ArrayList<Restaurants> getRestaurantInAbia() {
         // Create a list of events
         final ArrayList<Restaurants> restaurants = new ArrayList<Restaurants>();
-        restaurants.add(new Restaurants( R.drawable.stadium,"Filter"));
-        restaurants.add(new Restaurants( R.drawable.elibrary,"great place to be"));
-        restaurants.add(new Restaurants( R.drawable.fourpoints,"mighty fellowship"));
-        restaurants.add(new Restaurants( R.drawable.trops, "great event with Emem"));
-        restaurants.add(new Restaurants( R.drawable.elibrary,"great and mighty God"));
-        restaurants.add(new Restaurants( R.drawable.stadium,"good lord vincent is..."));
+        restaurants.add(new Restaurants(R.drawable.stadium, "Filter"));
+        restaurants.add(new Restaurants(R.drawable.elibrary, "great place to be"));
+        restaurants.add(new Restaurants(R.drawable.fourpoints, "mighty fellowship"));
+        restaurants.add(new Restaurants(R.drawable.trops, "great event with Emem"));
+        restaurants.add(new Restaurants(R.drawable.elibrary, "great and mighty God"));
+        restaurants.add(new Restaurants(R.drawable.stadium, "good lord vincent is..."));
 
         return restaurants;
     }
 
-    public ArrayList<Event> getEventsInAbeokuta(){
+    public ArrayList<Hotel> getHotelsInAbia() {
+        // Create a list of events
+        final ArrayList<Hotel> hotels = new ArrayList<Hotel>();
+        hotels.add(new Hotel("Calabar Festival", "December, 2018", R.drawable.stadium, "This Eveny is awesome"));
+        hotels.add(new Hotel("mustard yellow", "chiwiiṭә", R.drawable.elibrary,
+                "great place to be"));
+        hotels.add(new Hotel("dusty yellow", "ṭopiisә", R.drawable.fourpoints,
+                "mighty fellowship"));
+        hotels.add(new Hotel("green", "chokokki", R.drawable.trops, "great event with Emem"));
+        hotels.add(new Hotel("brown", "ṭakaakki", R.drawable.elibrary, "great and mighty God"));
+
+        return hotels;
+    }
+
+    public ArrayList<Event> getEventsInAbeokuta() {
 
         // Create a list of events
         final ArrayList<Event> events = new ArrayList<Event>();
@@ -304,29 +360,43 @@ public class ItemFragment extends Fragment {
         return events;
     }
 
-    public ArrayList<Attractions> getAttractionsInAbeokuta(){
+    public ArrayList<Attractions> getAttractionsInAbeokuta() {
         // Create a list of events
         final ArrayList<Attractions> attractions = new ArrayList<Attractions>();
-        attractions.add(new Attractions("Calabar Festival",R.drawable.stadium,R.drawable.stadium));
-        attractions.add(new Attractions("mustard yellow", R.drawable.elibrary,R.drawable.elibrary));
-        attractions.add(new Attractions("dusty yellow", R.drawable.fourpoints,R.drawable.fourpoints));
-        attractions.add(new Attractions( "chokokki", R.drawable.trops, R.drawable.trops));
+        attractions.add(new Attractions("Calabar Festival", R.drawable.stadium, R.drawable.stadium));
+        attractions.add(new Attractions("mustard yellow", R.drawable.elibrary, R.drawable.elibrary));
+        attractions.add(new Attractions("dusty yellow", R.drawable.fourpoints, R.drawable.fourpoints));
+        attractions.add(new Attractions("chokokki", R.drawable.trops, R.drawable.trops));
         attractions.add(new Attractions("ṭakaakki", R.drawable.elibrary, R.drawable.stadium));
-        attractions.add(new Attractions("ṭopoppi", R.drawable.stadium,R.drawable.fourpoints));
+        attractions.add(new Attractions("ṭopoppi", R.drawable.stadium, R.drawable.fourpoints));
 
         return attractions;
     }
 
-    public ArrayList<Restaurants> getRestaurantInAbeokuta(){
+    public ArrayList<Restaurants> getRestaurantInAbeokuta() {
         // Create a list of events
         final ArrayList<Restaurants> restaurants = new ArrayList<Restaurants>();
-        restaurants.add(new Restaurants( R.drawable.stadium,"Filter"));
-        restaurants.add(new Restaurants( R.drawable.elibrary,"great place to be"));
-        restaurants.add(new Restaurants( R.drawable.fourpoints,"mighty fellowship"));
-        restaurants.add(new Restaurants( R.drawable.trops, "great event with Emem"));
-        restaurants.add(new Restaurants( R.drawable.elibrary,"great and mighty God"));
-        restaurants.add(new Restaurants( R.drawable.stadium,"good lord vincent is..."));
+        restaurants.add(new Restaurants(R.drawable.stadium, "Filter"));
+        restaurants.add(new Restaurants(R.drawable.elibrary, "great place to be"));
+        restaurants.add(new Restaurants(R.drawable.fourpoints, "mighty fellowship"));
+        restaurants.add(new Restaurants(R.drawable.trops, "great event with Emem"));
+        restaurants.add(new Restaurants(R.drawable.elibrary, "great and mighty God"));
+        restaurants.add(new Restaurants(R.drawable.stadium, "good lord vincent is..."));
 
         return restaurants;
+    }
+
+    public ArrayList<Hotel> getHotelsInAbeokuta() {
+        // Create a list of events
+        final ArrayList<Hotel> hotels = new ArrayList<Hotel>();
+        hotels.add(new Hotel("Calabar Festival", "December, 2018", R.drawable.stadium, "This Eveny is awesome"));
+        hotels.add(new Hotel("mustard yellow", "chiwiiṭә", R.drawable.elibrary,
+                "great place to be"));
+        hotels.add(new Hotel("dusty yellow", "ṭopiisә", R.drawable.fourpoints,
+                "mighty fellowship"));
+        hotels.add(new Hotel("green", "chokokki", R.drawable.trops, "great event with Emem"));
+        hotels.add(new Hotel("brown", "ṭakaakki", R.drawable.elibrary, "great and mighty God"));
+
+        return hotels;
     }
 }

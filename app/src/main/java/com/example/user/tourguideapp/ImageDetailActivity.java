@@ -15,25 +15,18 @@ public class ImageDetailActivity extends AppCompatActivity {
     private static final String DRAWABLE_RESOURE = "resource";
     private static final String TEXT_RESOURCE = "textResource";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_detail);
 
-        imageView = (ImageView)findViewById(R.id.img);
-        textview= findViewById(R.id.text);
-
+        imageView = (ImageView) findViewById(R.id.img);
+        textview = findViewById(R.id.text);
 
         int drawbleResource = getIntent().getIntExtra(DRAWABLE_RESOURE, 0);
         imageView.setImageResource(drawbleResource);
-/*
-        String textResource = getIntent().getStringExtra("textArray");
-        textview .setText(textResource);
-*/
 
     }
-
     @Override
     public void onBackPressed() {
         finish();

@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.user.tourguideapp.CarouselLinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.user.tourguideapp.CarouselLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="-10dp"
     android:background="@android:color/transparent"
     android:gravity="center_horizontal"
-    android:layout_margin="-10dp"
     android:orientation="vertical">
 
-    <android.support.v7.widget.CardView
+    <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/parent"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        app:cardCornerRadius="10dp"
-        android:elevation="10dp">
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        app:cardCornerRadius="10dp">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraint_layout"
@@ -44,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="0dp"
                 android:layout_marginLeft="16dp"
-                android:text="Akwa Ibom"
+                android:text="@string/akwa_ibom"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -57,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
-                android:text="3 Visits"
+                android:text="@string/_3_visits"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"

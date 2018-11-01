@@ -49,8 +49,7 @@ public class RestaurantFragment extends Fragment {
         return rootView;
     }
 
-
-    void setRestaurants(ArrayList<Restaurants> restaurants){
+    void setRestaurants(ArrayList<Restaurants> restaurants) {
         this.restaurants = restaurants;
     }
 
