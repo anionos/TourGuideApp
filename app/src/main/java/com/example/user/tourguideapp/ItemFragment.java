@@ -38,8 +38,8 @@ public class ItemFragment extends Fragment {
             R.drawable.lagos,
             R.drawable.abiaa, R.drawable.abeokuta};
 
-    private String[] textArray = new String[]{"Calabar", "Abuja",
-            "Lagos", "Abia", "Abeokuta"};
+    private String[] textArray = new String[]{getString(R.string.calabar), getString(R.string.abuja),
+            getString(R.string.lagos), getString(R.string.abia), getString(R.string.abeokuta)};
 
     public static Fragment newInstance(MainActivity context, int pos, float scale) {
         Bundle b = new Bundle();
@@ -88,13 +88,13 @@ public class ItemFragment extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textArray[postion].equals("Calabar")) {
+                if (textArray[postion].equals(getString(R.string.calabar))) {
                     startTourDetailsActivity(getEventsInCalabar(), getAttractionsInCalabar(), getRestaurantInCalabar(),getHotelsInCalabar());
-                } else if (textArray[postion].equals("Abuja")) {
+                } else if (textArray[postion].equals(getString(R.string.abuja))) {
                     startTourDetailsActivity(getEventsInAbuja(), getAttractionsInAbuja(), getRestaurantInAbuja(),getHotelsInAbuja());
-                } else if (textArray[postion].equals("Lagos")) {
+                } else if (textArray[postion].equals(getString(R.string.lagos))) {
                     startTourDetailsActivity(getEventsInLagos(), getAttractionsInLagos(), getRestaurantInLagos(),getHotelsInLagos());
-                } else if (textArray[postion].equals("Abia")) {
+                } else if (textArray[postion].equals(getString(R.string.abia))) {
                     startTourDetailsActivity(getEventsInAbia(), getAttractionsInAbia(), getRestaurantInAbia(),getHotelsInAbia());
                 } else {
                     startTourDetailsActivity(getEventsInAbeokuta(), getAttractionsInAbeokuta(), getRestaurantInAbeokuta(),getHotelsInAbeokuta());
@@ -110,10 +110,10 @@ public class ItemFragment extends Fragment {
     public void startTourDetailsActivity(ArrayList<Event> events, ArrayList<Attractions> attractions, ArrayList<Restaurants> restaurants, ArrayList<Hotel> hotels) {
         Intent intent = new Intent(getActivity(), TourDetailsActivity.class);
         //this adds extra data to the intent of the next activity
-        intent.putExtra("events", Parcels.wrap(events));
-        intent.putExtra("attractions", Parcels.wrap(attractions));
-        intent.putExtra("restaurants", Parcels.wrap(restaurants));
-        intent.putExtra("hotels", Parcels.wrap(hotels));
+        intent.putExtra(getString(R.string.event), Parcels.wrap(events));
+        intent.putExtra(getString(R.string.attractions), Parcels.wrap(attractions));
+        intent.putExtra(getString(R.string.restaurant), Parcels.wrap(restaurants));
+        intent.putExtra(getString(R.string.hotels), Parcels.wrap(hotels));
         startActivity(intent);
     }
 
@@ -131,12 +131,12 @@ public class ItemFragment extends Fragment {
 
         // Create a list of events
         final ArrayList<Event> events = new ArrayList<Event>();
-        events.add(new Event("Calabar Festival", "December 31", R.drawable.cal_festival, "This Event is awesome "));
-        events.add(new Event("Trade Fair", "December 15", R.drawable.cal_trade,
-                "Come lets Trade and Associate"));
-        events.add(new Event("Calabar Day", "October 27", R.drawable.cal_festival,
-                "Celabrating our culture"));
-        events.add(new Event("Calabar Market", "September 13", R.drawable.cal_markrt, "Mingle and associate"));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.cal_date), R.drawable.cal_festival, getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.trade_day), getString(R.string.trade_date), R.drawable.cal_trade,
+                getString(R.string.trade_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.cal_date), R.drawable.cal_festival,
+                getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_market), getString(R.string.market_date), R.drawable.cal_markrt, getString(R.string.market_desc)));
 
         return events;
     }
@@ -144,12 +144,12 @@ public class ItemFragment extends Fragment {
     public ArrayList<Attractions> getAttractionsInCalabar() {
         // Create a list of events
         final ArrayList<Attractions> attractions = new ArrayList<Attractions>();
-        attractions.add(new Attractions("Donald duke Garden", R.drawable.cally, R.drawable.fourpoints));
-        attractions.add(new Attractions("Obudu Mountain Resort", R.drawable.obudu, R.drawable.fourpoints));
-        attractions.add(new Attractions("Calabar Carnival", R.drawable.cal_festival, R.drawable.fourpoints));
-        attractions.add(new Attractions("Tinapa", R.drawable.tin, R.drawable.fourpoints));
-        attractions.add(new Attractions("Mighty Hands", R.drawable.cally, R.drawable.fourpoints));
-        attractions.add(new Attractions("Snake Garden", R.drawable.obudu, R.drawable.fourpoints));
+        attractions.add(new Attractions(getString(R.string.duke_garden), R.drawable.cally, R.drawable.fourpoints));
+        attractions.add(new Attractions(getString(R.string.obudu_mountain), R.drawable.obudu, R.drawable.fourpoints));
+        attractions.add(new Attractions(getString(R.string.cal_festival), R.drawable.cal_festival, R.drawable.fourpoints));
+        attractions.add(new Attractions(getString(R.string.tinapa), R.drawable.tin, R.drawable.fourpoints));
+        attractions.add(new Attractions(getString(R.string.mighty_hands), R.drawable.cally, R.drawable.fourpoints));
+        attractions.add(new Attractions(getString(R.string.snake_garden), R.drawable.obudu, R.drawable.fourpoints));
 
         return attractions;
     }
@@ -157,11 +157,11 @@ public class ItemFragment extends Fragment {
     public ArrayList<Restaurants> getRestaurantInCalabar() {
         // Create a list of events
         final ArrayList<Restaurants> restaurants = new ArrayList<Restaurants>();
-        restaurants.add(new Restaurants(R.drawable.cal_festival, "serve Yourself"));
-        restaurants.add(new Restaurants(R.drawable.cally, "Delicious"));
-        restaurants.add(new Restaurants(R.drawable.tin, "Spicy"));
-        restaurants.add(new Restaurants(R.drawable.obudu, "Mama's Touch"));
-        restaurants.add(new Restaurants(R.drawable.cal_markrt, "Supreme Meal"));
+        restaurants.add(new Restaurants(R.drawable.cal_festival, getString(R.string.serve_yourself)));
+        restaurants.add(new Restaurants(R.drawable.cally, getString(R.string.Delicioius)));
+        restaurants.add(new Restaurants(R.drawable.tin, getString(R.string.spicy)));
+        restaurants.add(new Restaurants(R.drawable.obudu, getString(R.string.mama_touch)));
+        restaurants.add(new Restaurants(R.drawable.cal_markrt, getString(R.string.supreme_meal)));
 
         return restaurants;
     }
@@ -169,13 +169,13 @@ public class ItemFragment extends Fragment {
     public ArrayList<Hotel> getHotelsInCalabar() {
         // Create a list of events
         final ArrayList<Hotel> hotels = new ArrayList<Hotel>();
-        hotels.add(new Hotel("Calabar Festival", "December, 2018", R.drawable.stadium, "This Eveny is awesome"));
-        hotels.add(new Hotel("mustard yellow", "chiwiiṭә", R.drawable.elibrary,
-                "great place to be"));
-        hotels.add(new Hotel("dusty yellow", "ṭopiisә", R.drawable.fourpoints,
-                "mighty fellowship"));
-        hotels.add(new Hotel("green", "chokokki", R.drawable.trops, "great event with Emem"));
-        hotels.add(new Hotel("brown", "ṭakaakki", R.drawable.elibrary, "great and mighty God"));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.cal_date), R.drawable.stadium, getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival),  getString(R.string.trade_date), R.drawable.elibrary,
+                getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival),  getString(R.string.trade_date), R.drawable.fourpoints,
+                getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival),  getString(R.string.trade_date), R.drawable.trops, getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival),  getString(R.string.trade_date),R.drawable.elibrary, getString(R.string.cal_description)));
 
         return hotels;
     }
@@ -184,13 +184,13 @@ public class ItemFragment extends Fragment {
 
         // Create a list of events
         final ArrayList<Event> events = new ArrayList<Event>();
-        events.add(new Event("Calabar Festival", "December, 2018", R.drawable.stadium, "This Eveny is awesome"));
-        events.add(new Event("mustard yellow", "chiwiiṭә", R.drawable.elibrary,
-                "great place to be"));
-        events.add(new Event("dusty yellow", "ṭopiisә", R.drawable.fourpoints,
-                "mighty fellowship"));
-        events.add(new Event("green", "chokokki", R.drawable.trops, "great event with Emem"));
-        events.add(new Event("brown", "ṭakaakki", R.drawable.elibrary, "great and mighty God"));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.stadium, getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary,
+                getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.fourpoints,
+                getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.trops, getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary, getString(R.string.cal_description)));
 
         return events;
     }
@@ -198,12 +198,12 @@ public class ItemFragment extends Fragment {
     public ArrayList<Attractions> getAttractionsInAbuja() {
         // Create a list of events
         final ArrayList<Attractions> attractions = new ArrayList<Attractions>();
-        attractions.add(new Attractions("Calabar Festival", R.drawable.stadium, R.drawable.stadium));
-        attractions.add(new Attractions("mustard yellow", R.drawable.elibrary, R.drawable.elibrary));
-        attractions.add(new Attractions("dusty yellow", R.drawable.fourpoints, R.drawable.fourpoints));
-        attractions.add(new Attractions("chokokki", R.drawable.trops, R.drawable.trops));
-        attractions.add(new Attractions("ṭakaakki", R.drawable.elibrary, R.drawable.stadium));
-        attractions.add(new Attractions("ṭopoppi", R.drawable.stadium, R.drawable.fourpoints));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.stadium, R.drawable.stadium));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.elibrary, R.drawable.elibrary));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.fourpoints, R.drawable.fourpoints));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.trops, R.drawable.trops));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.elibrary, R.drawable.stadium));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.stadium, R.drawable.fourpoints));
 
         return attractions;
     }
@@ -211,12 +211,12 @@ public class ItemFragment extends Fragment {
     public ArrayList<Restaurants> getRestaurantInAbuja() {
         // Create a list of events
         final ArrayList<Restaurants> restaurants = new ArrayList<Restaurants>();
-        restaurants.add(new Restaurants(R.drawable.stadium, "Filter"));
-        restaurants.add(new Restaurants(R.drawable.elibrary, "great place to be"));
-        restaurants.add(new Restaurants(R.drawable.fourpoints, "mighty fellowship"));
-        restaurants.add(new Restaurants(R.drawable.trops, "great event with Emem"));
-        restaurants.add(new Restaurants(R.drawable.elibrary, "great and mighty God"));
-        restaurants.add(new Restaurants(R.drawable.stadium, "good lord vincent is..."));
+        restaurants.add(new Restaurants(R.drawable.stadium,  getString(R.string.trade_date)));
+        restaurants.add(new Restaurants(R.drawable.elibrary,  getString(R.string.trade_date)));
+        restaurants.add(new Restaurants(R.drawable.fourpoints,  getString(R.string.trade_date)));
+        restaurants.add(new Restaurants(R.drawable.trops,  getString(R.string.trade_date)));
+        restaurants.add(new Restaurants(R.drawable.elibrary,  getString(R.string.trade_date)));
+        restaurants.add(new Restaurants(R.drawable.stadium,  getString(R.string.trade_date)));
 
         return restaurants;
     }
@@ -224,13 +224,13 @@ public class ItemFragment extends Fragment {
     public ArrayList<Hotel> getHotelsInAbuja() {
         // Create a list of events
         final ArrayList<Hotel> hotels = new ArrayList<Hotel>();
-        hotels.add(new Hotel("Calabar Festival", "December, 2018", R.drawable.stadium, "This Eveny is awesome"));
-        hotels.add(new Hotel("mustard yellow", "chiwiiṭә", R.drawable.elibrary,
-                "great place to be"));
-        hotels.add(new Hotel("dusty yellow", "ṭopiisә", R.drawable.fourpoints,
-                "mighty fellowship"));
-        hotels.add(new Hotel("green", "chokokki", R.drawable.trops, "great event with Emem"));
-        hotels.add(new Hotel("brown", "ṭakaakki", R.drawable.elibrary, "great and mighty God"));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.stadium, getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary,
+                getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.fourpoints,
+                getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.trops, getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary, getString(R.string.cal_description)));
 
         return hotels;
     }
@@ -239,13 +239,13 @@ public class ItemFragment extends Fragment {
 
         // Create a list of events
         final ArrayList<Event> events = new ArrayList<Event>();
-        events.add(new Event("Calabar Festival", "December, 2018", R.drawable.stadium, "This Eveny is awesome"));
-        events.add(new Event("mustard yellow", "chiwiiṭә", R.drawable.elibrary,
-                "great place to be"));
-        events.add(new Event("dusty yellow", "ṭopiisә", R.drawable.fourpoints,
-                "mighty fellowship"));
-        events.add(new Event("green", "chokokki", R.drawable.trops, "great event with Emem"));
-        events.add(new Event("brown", "ṭakaakki", R.drawable.elibrary, "great and mighty God"));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.stadium, getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary,
+                getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.fourpoints,
+                getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.trops, getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary, getString(R.string.cal_description)));
 
         return events;
     }
@@ -253,12 +253,12 @@ public class ItemFragment extends Fragment {
     public ArrayList<Attractions> getAttractionsInLagos() {
         // Create a list of events
         final ArrayList<Attractions> attractions = new ArrayList<Attractions>();
-        attractions.add(new Attractions("Calabar Festival", R.drawable.stadium, R.drawable.stadium));
-        attractions.add(new Attractions("mustard yellow", R.drawable.elibrary, R.drawable.elibrary));
-        attractions.add(new Attractions("dusty yellow", R.drawable.fourpoints, R.drawable.fourpoints));
-        attractions.add(new Attractions("chokokki", R.drawable.trops, R.drawable.trops));
-        attractions.add(new Attractions("ṭakaakki", R.drawable.elibrary, R.drawable.stadium));
-        attractions.add(new Attractions("ṭopoppi", R.drawable.stadium, R.drawable.fourpoints));
+        attractions.add(new Attractions(getString(R.string.cal_festival), R.drawable.stadium, R.drawable.stadium));
+        attractions.add(new Attractions(getString(R.string.cal_festival), R.drawable.elibrary, R.drawable.elibrary));
+        attractions.add(new Attractions(getString(R.string.cal_festival), R.drawable.fourpoints, R.drawable.fourpoints));
+        attractions.add(new Attractions(getString(R.string.cal_festival), R.drawable.trops, R.drawable.trops));
+        attractions.add(new Attractions(getString(R.string.cal_festival), R.drawable.elibrary, R.drawable.stadium));
+        attractions.add(new Attractions(getString(R.string.cal_festival), R.drawable.stadium, R.drawable.fourpoints));
 
         return attractions;
     }
@@ -266,12 +266,12 @@ public class ItemFragment extends Fragment {
     public ArrayList<Restaurants> getRestaurantInLagos() {
         // Create a list of events
         final ArrayList<Restaurants> restaurants = new ArrayList<Restaurants>();
-        restaurants.add(new Restaurants(R.drawable.stadium, "Filter"));
-        restaurants.add(new Restaurants(R.drawable.elibrary, "great place to be"));
-        restaurants.add(new Restaurants(R.drawable.fourpoints, "mighty fellowship"));
-        restaurants.add(new Restaurants(R.drawable.trops, "great event with Emem"));
-        restaurants.add(new Restaurants(R.drawable.elibrary, "great and mighty God"));
-        restaurants.add(new Restaurants(R.drawable.stadium, "good lord vincent is..."));
+        restaurants.add(new Restaurants(R.drawable.stadium, getString(R.string.cal_festival)));
+        restaurants.add(new Restaurants(R.drawable.elibrary, getString(R.string.cal_festival)));
+        restaurants.add(new Restaurants(R.drawable.fourpoints, getString(R.string.cal_festival)));
+        restaurants.add(new Restaurants(R.drawable.trops, getString(R.string.cal_festival)));
+        restaurants.add(new Restaurants(R.drawable.elibrary, getString(R.string.cal_festival)));
+        restaurants.add(new Restaurants(R.drawable.stadium, getString(R.string.cal_festival)));
 
         return restaurants;
     }
@@ -279,13 +279,13 @@ public class ItemFragment extends Fragment {
     public ArrayList<Hotel> getHotelsInLagos() {
         // Create a list of events
         final ArrayList<Hotel> hotels = new ArrayList<Hotel>();
-        hotels.add(new Hotel("Calabar Festival", "December, 2018", R.drawable.stadium, "This Eveny is awesome"));
-        hotels.add(new Hotel("mustard yellow", "chiwiiṭә", R.drawable.elibrary,
-                "great place to be"));
-        hotels.add(new Hotel("dusty yellow", "ṭopiisә", R.drawable.fourpoints,
-                "mighty fellowship"));
-        hotels.add(new Hotel("green", "chokokki", R.drawable.trops, "great event with Emem"));
-        hotels.add(new Hotel("brown", "ṭakaakki", R.drawable.elibrary, "great and mighty God"));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.stadium, getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary,
+                getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.fourpoints,
+                getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.trops, getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary, getString(R.string.cal_description)));
 
         return hotels;
     }
@@ -294,13 +294,13 @@ public class ItemFragment extends Fragment {
 
         // Create a list of events
         final ArrayList<Event> events = new ArrayList<Event>();
-        events.add(new Event("Calabar Festival", "December, 2018", R.drawable.stadium, "This Eveny is awesome"));
-        events.add(new Event("mustard yellow", "chiwiiṭә", R.drawable.elibrary,
-                "great place to be"));
-        events.add(new Event("dusty yellow", "ṭopiisә", R.drawable.fourpoints,
-                "mighty fellowship"));
-        events.add(new Event("green", "chokokki", R.drawable.trops, "great event with Emem"));
-        events.add(new Event("brown", "ṭakaakki", R.drawable.elibrary, "great and mighty God"));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.stadium, getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary,
+                getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.fourpoints,
+                getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.trops, getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary, getString(R.string.cal_description)));
 
         return events;
     }
@@ -308,12 +308,12 @@ public class ItemFragment extends Fragment {
     public ArrayList<Attractions> getAttractionsInAbia() {
         // Create a list of events
         final ArrayList<Attractions> attractions = new ArrayList<Attractions>();
-        attractions.add(new Attractions("Calabar Festival", R.drawable.stadium, R.drawable.stadium));
-        attractions.add(new Attractions("mustard yellow", R.drawable.elibrary, R.drawable.elibrary));
-        attractions.add(new Attractions("dusty yellow", R.drawable.fourpoints, R.drawable.fourpoints));
-        attractions.add(new Attractions("chokokki", R.drawable.trops, R.drawable.trops));
-        attractions.add(new Attractions("ṭakaakki", R.drawable.elibrary, R.drawable.stadium));
-        attractions.add(new Attractions("ṭopoppi", R.drawable.stadium, R.drawable.fourpoints));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.stadium, R.drawable.stadium));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.elibrary, R.drawable.elibrary));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.fourpoints, R.drawable.fourpoints));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.trops, R.drawable.trops));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.elibrary, R.drawable.stadium));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.stadium, R.drawable.fourpoints));
 
         return attractions;
     }
@@ -321,12 +321,12 @@ public class ItemFragment extends Fragment {
     public ArrayList<Restaurants> getRestaurantInAbia() {
         // Create a list of events
         final ArrayList<Restaurants> restaurants = new ArrayList<Restaurants>();
-        restaurants.add(new Restaurants(R.drawable.stadium, "Filter"));
-        restaurants.add(new Restaurants(R.drawable.elibrary, "great place to be"));
-        restaurants.add(new Restaurants(R.drawable.fourpoints, "mighty fellowship"));
-        restaurants.add(new Restaurants(R.drawable.trops, "great event with Emem"));
-        restaurants.add(new Restaurants(R.drawable.elibrary, "great and mighty God"));
-        restaurants.add(new Restaurants(R.drawable.stadium, "good lord vincent is..."));
+        restaurants.add(new Restaurants(R.drawable.stadium, getString(R.string.cal_festival)));
+        restaurants.add(new Restaurants(R.drawable.elibrary, getString(R.string.cal_festival)));
+        restaurants.add(new Restaurants(R.drawable.fourpoints, getString(R.string.cal_festival)));
+        restaurants.add(new Restaurants(R.drawable.trops, getString(R.string.cal_festival)));
+        restaurants.add(new Restaurants(R.drawable.elibrary, getString(R.string.cal_festival)));
+        restaurants.add(new Restaurants(R.drawable.stadium, getString(R.string.cal_festival)));
 
         return restaurants;
     }
@@ -334,13 +334,13 @@ public class ItemFragment extends Fragment {
     public ArrayList<Hotel> getHotelsInAbia() {
         // Create a list of events
         final ArrayList<Hotel> hotels = new ArrayList<Hotel>();
-        hotels.add(new Hotel("Calabar Festival", "December, 2018", R.drawable.stadium, "This Eveny is awesome"));
-        hotels.add(new Hotel("mustard yellow", "chiwiiṭә", R.drawable.elibrary,
-                "great place to be"));
-        hotels.add(new Hotel("dusty yellow", "ṭopiisә", R.drawable.fourpoints,
-                "mighty fellowship"));
-        hotels.add(new Hotel("green", "chokokki", R.drawable.trops, "great event with Emem"));
-        hotels.add(new Hotel("brown", "ṭakaakki", R.drawable.elibrary, "great and mighty God"));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.stadium, getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary,
+                getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.fourpoints,
+                getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.trops, getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary, getString(R.string.cal_description)));
 
         return hotels;
     }
@@ -349,13 +349,13 @@ public class ItemFragment extends Fragment {
 
         // Create a list of events
         final ArrayList<Event> events = new ArrayList<Event>();
-        events.add(new Event("Calabar Festival", "December, 2018", R.drawable.stadium, "This Eveny is awesome"));
-        events.add(new Event("mustard yellow", "chiwiiṭә", R.drawable.elibrary,
-                "great place to be"));
-        events.add(new Event("dusty yellow", "ṭopiisә", R.drawable.fourpoints,
-                "mighty fellowship"));
-        events.add(new Event("green", "chokokki", R.drawable.trops, "great event with Emem"));
-        events.add(new Event("brown", "ṭakaakki", R.drawable.elibrary, "great and mighty God"));
+        events.add(new Event(getString(R.string.cal_festival),getString(R.string.trade_date), R.drawable.stadium, getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary,
+                getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.fourpoints,
+                getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.trops, getString(R.string.cal_description)));
+        events.add(new Event(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary, getString(R.string.cal_description)));
 
         return events;
     }
@@ -363,12 +363,12 @@ public class ItemFragment extends Fragment {
     public ArrayList<Attractions> getAttractionsInAbeokuta() {
         // Create a list of events
         final ArrayList<Attractions> attractions = new ArrayList<Attractions>();
-        attractions.add(new Attractions("Calabar Festival", R.drawable.stadium, R.drawable.stadium));
-        attractions.add(new Attractions("mustard yellow", R.drawable.elibrary, R.drawable.elibrary));
-        attractions.add(new Attractions("dusty yellow", R.drawable.fourpoints, R.drawable.fourpoints));
-        attractions.add(new Attractions("chokokki", R.drawable.trops, R.drawable.trops));
-        attractions.add(new Attractions("ṭakaakki", R.drawable.elibrary, R.drawable.stadium));
-        attractions.add(new Attractions("ṭopoppi", R.drawable.stadium, R.drawable.fourpoints));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.stadium, R.drawable.stadium));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.elibrary, R.drawable.elibrary));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.fourpoints, R.drawable.fourpoints));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.trops, R.drawable.trops));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.elibrary, R.drawable.stadium));
+        attractions.add(new Attractions( getString(R.string.trade_date), R.drawable.stadium, R.drawable.fourpoints));
 
         return attractions;
     }
@@ -376,12 +376,12 @@ public class ItemFragment extends Fragment {
     public ArrayList<Restaurants> getRestaurantInAbeokuta() {
         // Create a list of events
         final ArrayList<Restaurants> restaurants = new ArrayList<Restaurants>();
-        restaurants.add(new Restaurants(R.drawable.stadium, "Filter"));
-        restaurants.add(new Restaurants(R.drawable.elibrary, "great place to be"));
-        restaurants.add(new Restaurants(R.drawable.fourpoints, "mighty fellowship"));
-        restaurants.add(new Restaurants(R.drawable.trops, "great event with Emem"));
-        restaurants.add(new Restaurants(R.drawable.elibrary, "great and mighty God"));
-        restaurants.add(new Restaurants(R.drawable.stadium, "good lord vincent is..."));
+        restaurants.add(new Restaurants(R.drawable.stadium,  getString(R.string.trade_date)));
+        restaurants.add(new Restaurants(R.drawable.elibrary,  getString(R.string.trade_date)));
+        restaurants.add(new Restaurants(R.drawable.fourpoints,  getString(R.string.trade_date)));
+        restaurants.add(new Restaurants(R.drawable.trops,  getString(R.string.trade_date)));
+        restaurants.add(new Restaurants(R.drawable.elibrary,  getString(R.string.trade_date)));
+        restaurants.add(new Restaurants(R.drawable.stadium,  getString(R.string.trade_date)));
 
         return restaurants;
     }
@@ -389,13 +389,13 @@ public class ItemFragment extends Fragment {
     public ArrayList<Hotel> getHotelsInAbeokuta() {
         // Create a list of events
         final ArrayList<Hotel> hotels = new ArrayList<Hotel>();
-        hotels.add(new Hotel("Calabar Festival", "December, 2018", R.drawable.stadium, "This Eveny is awesome"));
-        hotels.add(new Hotel("mustard yellow", "chiwiiṭә", R.drawable.elibrary,
-                "great place to be"));
-        hotels.add(new Hotel("dusty yellow", "ṭopiisә", R.drawable.fourpoints,
-                "mighty fellowship"));
-        hotels.add(new Hotel("green", "chokokki", R.drawable.trops, "great event with Emem"));
-        hotels.add(new Hotel("brown", "ṭakaakki", R.drawable.elibrary, "great and mighty God"));
+        hotels.add(new Hotel(getString(R.string.cal_festival),getString(R.string.trade_date), R.drawable.stadium, getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary,
+                getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.fourpoints,
+                getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.trops, getString(R.string.cal_description)));
+        hotels.add(new Hotel(getString(R.string.cal_festival), getString(R.string.trade_date), R.drawable.elibrary, getString(R.string.cal_description)));
 
         return hotels;
     }

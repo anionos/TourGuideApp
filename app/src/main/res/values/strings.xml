@@ -17,6 +17,29 @@
     <string name="recommended">Recommended</string>
     <string name="explore">Explore</string>
     <string name="e_library">E-Library</string>
+    <string name="calabar">Calabar</string>
+    <string name="abuja">Abuja</string>
     <string name="lagos">Lagos</string>
+    <string name="abia">Abia</string>
+    <string name="abeokuta">Abeokuta</string>
+    <string name="cal_festival">Calabar Festival</string>
+    <string name="cal_date">December 31</string>
+    <string name="cal_description">This Event is awesome</string>
+    <string name="trade_day">Trade Fair</string>
+    <string name="trade_date">December 15</string>
+    <string name="trade_description">Come lets Trade and Associate</string>
+    <string name="cal_market">Calabar Market</string>
+    <string name="market_date">September 13</string>
+    <string name="market_desc">Mingle and associate</string>
+    <string name="duke_garden">Donald duke Garden</string>
+    <string name="obudu_mountain">Obudu Mountain Resort</string>
+    <string name="tinapa">Tinapa</string>
+    <string name="mighty_hands">Mighty Hands</string>
+    <string name="snake_garden">Snake Garden</string>
+    <string name="serve_yourself">serve Yourself</string>
+    <string name="Delicioius">Delicious</string>
+    <string name="spicy">Spicy</string>
+    <string name="mama_touch">Mama\'s Touch</string>
+    <string name="supreme_meal">Supreme Meal</string>
 
 </resources>
